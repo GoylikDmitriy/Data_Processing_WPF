@@ -1,0 +1,86 @@
+﻿<Window x:Class="DataProcessing.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataProcessing"
+        mc:Ignorable="d"
+        Title="Data Processing" WindowStartupLocation="CenterScreen"
+        Height="450" Width="800">
+
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="PrimaryButtonStyle">
+            <Setter Property="Background" Value="RoyalBlue"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="Button" x:Key="SecondaryButtonStyle">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="RoyalBlue"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="Label" x:Key="InfoLabelStyle">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="SeaGreen"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" Margin="15">
+            <Label x:Name="lblGenerateFilesTitle" HorizontalAlignment="Center" Content="GENERATE FILES" Foreground="CadetBlue" FontSize="27" FontWeight="ExtraBlack"/>
+            <Button x:Name="btnGenerateFiles" Grid.Row="0" Grid.Column="0" Height="50" Content="Generate Files" Click="btnGenerateFiles_Click" Style="{StaticResource PrimaryButtonStyle}" Margin="20 15 20 0"/>
+            <Label x:Name="lblGeneratedFiles" Style="{StaticResource InfoLabelStyle}" Margin="0 10 0 0"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Margin="15">
+            <Label x:Name="lblLineToDelete" HorizontalAlignment="Center" Content="Enter pattern to remove line" Foreground="CadetBlue" FontSize="25" FontWeight="ExtraBlack"/>
+            <TextBox x:Name="txtLineToDelete" Width="300" Height="30" Foreground="IndianRed" FontSize="20" FontWeight="Bold" Background="WhiteSmoke" Margin="0 0 0 15"/>
+            <Button x:Name="btnMergeFiles" Width="150" Height="50" Content="Merge Files" Click="btnMergeFiles_Click" Style="{StaticResource PrimaryButtonStyle}"/>
+            <Label x:Name="lblRemovedLinesCount" VerticalAlignment="Top" Style="{StaticResource InfoLabelStyle}" Margin="0 10 0 0"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="10">
+            <Label x:Name="lblImportTitle" HorizontalAlignment="Center" Content="IMPORTING DATA TO DB" Foreground="CadetBlue" FontSize="27" FontWeight="ExtraBlack"/>
+            <StackPanel Orientation="Horizontal" Margin="0 20 0 0" HorizontalAlignment="Center">
+                <Button x:Name="btnImport" Grid.Row="1" Grid.Column="1" Width="150" Height="50" Content="Import File" Click="btnImport_Click" Style="{StaticResource PrimaryButtonStyle}"/>
+                <Button x:Name="btnStopImport" Grid.Row="1" Grid.Column="1" Width="150" Height="50" Content="Stop Import" Click="btnStopImport_Click" Background="PaleVioletRed" Style="{StaticResource PrimaryButtonStyle}" Margin="20 0 0 0"/>
+            </StackPanel>
+            <Label x:Name="lblUploadedFiles" Grid.Row="1" Grid.Column="1" Style="{StaticResource InfoLabelStyle}" Margin="40"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+            <Label x:Name="lblTask2" HorizontalAlignment="Center" Content="TASK 2" Foreground="CadetBlue" FontSize="27" FontWeight="ExtraBlack"/>
+            <Grid Height="115">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Vertical" Margin="0 10 0 0">
+                    <Border BorderBrush="RoyalBlue" BorderThickness="3" Width="170" Height="50">
+                        <Button x:Name="btnImportExcelFile" Grid.Row="1" Grid.Column="1" Content="Import Excel File" Style="{StaticResource SecondaryButtonStyle}" Click="btnImportExcelFile_Click"/>
+                    </Border>
+                    <Border BorderBrush="RoyalBlue" BorderThickness="3" Width="170" Height="50" Margin="0 5 0 0">
+                        <Button x:Name="btnShowData" Grid.Row="1" Grid.Column="1" Content="Show Data" Style="{StaticResource SecondaryButtonStyle}" Click="btnShowData_Click"/>
+                    </Border>
+                </StackPanel>
+
+                <ListBox x:Name="listBoxImportedExcelFiles" Grid.Column="1"/>
+            </Grid>
+            <Label x:Name="lblImportedExcelFile" Style="{StaticResource InfoLabelStyle}"/>
+        </StackPanel>
+    </Grid>
+</Window>

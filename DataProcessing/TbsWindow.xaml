@@ -1,0 +1,84 @@
+﻿<Window x:Class="DataProcessing.TbsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataProcessing"
+        mc:Ignorable="d"
+        Title="Trial Balance Sheet" Height="600" Width="1300"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    
+    <Window.Resources>
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+
+        <Style x:Key="BorderStyle" TargetType="Border">
+            <Setter Property="BorderBrush" Value="CadetBlue"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+    </Window.Resources>
+    
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid x:Name="TbsGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="35"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="tblTitle" Grid.Row="0" Grid.ColumnSpan="7" Text="Оборотная ведомость по балансовым счетам" HorizontalAlignment="Center" Foreground="CadetBlue" FontSize="35" FontWeight="Black"/>
+            <TextBlock x:Name="tblPeriod" Grid.Row="1" Grid.ColumnSpan="7" HorizontalAlignment="Center" Foreground="CadetBlue" FontSize="15" FontWeight="Bold"/>
+            <TextBlock x:Name="tblBank" Grid.Row="2" Grid.ColumnSpan="7" HorizontalAlignment="Center" Foreground="CadetBlue" FontSize="15" FontWeight="Bold"/>
+
+            <Border Grid.Row="3" Grid.RowSpan="2" Grid.Column="0" Style="{StaticResource BorderStyle}" Margin="10 0 0 0">
+                <TextBlock x:Name="tblAccount" Text="Б/сч" Style="{StaticResource TextBlockStyle}"/>
+            </Border>
+
+            <Border Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="1" Style="{StaticResource BorderStyle}">
+                <TextBlock x:Name="tblOpeningBalance" Text="ВХОДЯЩЕЕ САЛЬДО" Style="{StaticResource TextBlockStyle}"/>
+            </Border>
+            <Border Grid.Row="4" Grid.Column="1" Style="{StaticResource BorderStyle}">
+                <TextBlock x:Name="tblObAssets" Text="Актив" Style="{StaticResource TextBlockStyle}"/>
+            </Border>
+            <Border Grid.Row="4" Grid.Column="2" Style="{StaticResource BorderStyle}">
+                <TextBlock x:Name="tblObLiabilities" Text="Пассив" Style="{StaticResource TextBlockStyle}"/>
+            </Border>
+
+            <Border Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="3" Style="{StaticResource BorderStyle}">
+                <TextBlock x:Name="tblTransaction" Text="ОБОРОТЫ" Style="{StaticResource TextBlockStyle}"/>
+            </Border>
+            <Border Grid.Row="4" Grid.Column="3" Style="{StaticResource BorderStyle}">
+                <TextBlock x:Name="tblDebit" Text="Дебет" Style="{StaticResource TextBlockStyle}"/>
+            </Border>
+            <Border Grid.Row="4" Grid.Column="4" Style="{StaticResource BorderStyle}">
+                <TextBlock x:Name="tblCredit" Text="Кредит" Style="{StaticResource TextBlockStyle}"/>
+            </Border>
+
+            <Border Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="5" Style="{StaticResource BorderStyle}" Margin="0 0 10 0">
+                <TextBlock x:Name="tblClosingBalance" Text="ИСХОДЯЩЕЕ САЛЬДО" Style="{StaticResource TextBlockStyle}"/>
+            </Border>
+            <Border Grid.Row="4" Grid.Column="5" Style="{StaticResource BorderStyle}">
+                <TextBlock x:Name="tblCbAssets" Text="Актив" Style="{StaticResource TextBlockStyle}"/>
+            </Border>
+            <Border Grid.Row="4" Grid.Column="6" Style="{StaticResource BorderStyle}" Margin="0 0 10 0">
+                <TextBlock x:Name="tblCbLiabilities" Text="Пассив" Style="{StaticResource TextBlockStyle}"/>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</Window>
